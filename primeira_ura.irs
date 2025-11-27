@@ -1,0 +1,157 @@
+﻿version "8.2"
+file version 0, 1
+flow view {
+}
+
+audio {}
+
+modules {}
+
+dependencies {
+
+}
+
+constants {}
+
+types {}
+
+variables {
+
+}
+
+parameters {}
+
+campaign record {}
+
+contact record {}
+
+workflow record {}
+
+transferred record {}
+
+contact profile extensions {}
+
+outcome record {}
+
+cursors {}
+
+using namespaces {
+
+}
+
+on start {
+	goto node 'MAIN'
+}
+
+on end {}
+
+node "MASTER" {
+	id 1
+
+}
+
+node "MAIN" {
+	id 2
+	master "MASTER"
+	variables {}
+	cursors {}
+	on first enter {
+		play {
+			expression '<\\\\10.1.1.53\\Audios\\primeira_ura\\bem_vindo.wav>'
+		}
+		goto node 'MENU'
+	}
+	on enter {}
+	node loop {}
+	on exit {}
+}
+
+node "MENU" {
+	id 3
+	master "MASTER"
+	variables {
+		MENU: text
+	}
+	cursors {}
+	on first enter {}
+	on enter {}
+	node loop {
+		play {
+			expression '<\\\\10.1.1.53\\Audios\\primeira_ura\\menu.wav>'
+		}
+		get digits into MENU {
+			input mode size 1
+			on digits do {
+				case MENU {
+					when 1 do {
+						goto node 'SUBMENU'
+					}
+					when 2 do {
+						goto node 'COMERCIAL'
+					}
+					when 3 do {
+						goto node 'FINANCEIRO'
+					}
+					default {
+						play {
+							expression '<\\\\10.1.1.53\\Audios\\primeira_ura\\opcao_invalida.wav>'
+						}
+						goto node 'MENU'
+					}
+				}
+			}
+			on timeout do {}
+			on error do {}
+		}
+	}
+	on exit {}
+}
+
+node "SUBMENU" {
+	id 4
+	master "MASTER"
+	variables {
+		SUBMENU: text
+	}
+	cursors {}
+	on first enter {}
+	on enter {}
+	node loop {
+		play {
+			expression '<\\\\10.1.1.53\\Audios\\primeira_ura\\submenu.wav>'
+		}
+		get digits into SUBMENU {
+			input mode size 1
+			on digits do {}
+			on timeout do {}
+			on error do {}
+		}
+	}
+	on exit {}
+}
+
+node "COMERCIAL" {
+	id 5
+	master "MASTER"
+	variables {}
+	cursors {}
+	on first enter {}
+	on enter {}
+	node loop {}
+	on exit {}
+}
+
+node "FINANCEIRO" {
+	id 6
+	master "MASTER"
+	variables {}
+	cursors {}
+	on first enter {}
+	on enter {}
+	node loop {}
+	on exit {}
+}
+<?xml version="1.0" encoding="UTF-8"?>
+<asl_meta_data xml_spec_version="8.2">
+  <debug_info />
+</asl_meta_data>
