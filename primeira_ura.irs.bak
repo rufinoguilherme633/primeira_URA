@@ -1,5 +1,5 @@
 ﻿version "8.2"
-file version 0, 9
+file version 0, 8
 flow view {
 }
 
@@ -180,9 +180,7 @@ node "FINANCEIRO" {
 	cursors {}
 	on first enter {}
 	on enter {}
-	node loop {
-		enqueue phone into campaign 'agentesMadeiraBrasil' 
-	}
+	node loop {}
 	on exit {}
 }
 <?xml version="1.0" encoding="UTF-8"?>
@@ -313,7 +311,6 @@ node "FINANCEIRO" {
           <flow_line ix="295" iy="106" fx="295" fy="616" />
         </flow_line_segments>
       </irs_node>
-      <irs_node x="-1" y="-1" name="FINANCEIRO" />
     </nodes>
   </asl_flow_info>
 </asl_meta_data>
